@@ -13,25 +13,34 @@ $.each(icones, function (key, val) {
 
 $(document).ready(function () {
     var name = $('span')
-console.log();
-
-$("#filter").on("input", function(){
+    $("#filter").on("input", function(){
     var expressao = new RegExp(this.value, "i")
     if (this.value.length > 0) {
         $.each(name, (key, val) => {
             if ( expressao.test($(val).text()) ) {
                  $('.row').find(`.${$(val).text()}`).css("display", "");
-                 
             } else{
                 $('.row').find(`.${$(val).text()}`).css("display", "none");
             }
         });
-
     } else {
         $.each(name, (key, val) => {
             $(name).parent('.default').css("display", "");
         })
     }
  })  
-
 });
+
+
+var myJson = new XMLHttpRequest();
+    myJson.open('GET', 'icons.json');
+    myJson.onreadystatechange=function(){
+        if (myJson.status === 200 && myJson.readyState === 4) {
+             var db = JSON.parse(myJson.responseText);
+             var icons = db.icons
+             
+             db.push({A:"dddd", A:"dddd", A:"dddd", A:"dddd", })
+                console.log(icons);
+        } 
+    };
+    myJson.send(null);
