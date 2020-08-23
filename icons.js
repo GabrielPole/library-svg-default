@@ -32,15 +32,3 @@ $(document).ready(function () {
 });
 
 
-var myJson = new XMLHttpRequest();
-    myJson.open('GET', 'icons.json');
-    myJson.onreadystatechange=function(){
-        if (myJson.status === 200 && myJson.readyState === 4) {
-             var db = JSON.parse(myJson.responseText);
-             var icons = db.icons
-             
-             db.push({A:"dddd", A:"dddd", A:"dddd", A:"dddd", })
-                console.log(icons);
-        } 
-    };
-    myJson.send(null);
