@@ -3,7 +3,6 @@ var datosTeste = {"id": 1, "ad": 1, "ed": 1, "ud": 1,};
 
 refreshFromServer()
 function refreshFromServer() {
-<<<<<<< HEAD
     var svgJson = new XMLHttpRequest();
 
     svgJson.open('GET', 'svg.php', false);
@@ -39,27 +38,6 @@ function refreshFromServer() {
         var symbolCode = $(selectIndex).prop("outerHTML");
         $(itm).find('.modal-body').val('');
 
-=======
-    
-    var svgJson = new XMLHttpRequest();
-    svgJson.open('GET', 'svg.php', false);
-    svgJson.send(null);
-    var domparser = new DOMParser()
-    var doc = domparser.parseFromString(svgJson.responseText, "text/html")
-
-    var testeId = $(doc).find("#icon-joins").attr("#icon-joins", "11111");
-    console.log(doc);
-
-
-    var icon = $('#default');
-    $.each(myData.icons, function (key, val) {
-        console.log($(doc).find(`#icon-${val.id}`).attr("viewBox"));
-        var cln = $(icon).clone().prop("id", val.id);
-        $(cln).removeClass('d-none');
-        $(cln).find('use').attr("href", `icon-library.svg#icon-${val.id}`);
-        $(cln).find('.icon-name').val(val.id);
-        $(cln).appendTo($(icon).parent());
->>>>>>> ebdb5aa3bb8c26cbc3dd57e792669b9ba91e4c86
     });
 };
 
