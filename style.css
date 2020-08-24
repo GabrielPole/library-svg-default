@@ -21,16 +21,18 @@ h1{
     background-clip: padding-box;
     border: 1px solid #ced4da;
     border-radius: .25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out;
 }
-
 .cna-box-svg{
     background-color: transparent;
     max-width: 150px;
     color: #bfc2c9;
 }
-
 .cna-box-svg svg{
-   fill: #646270;
-   
+   fill: #646270; 
+}
+
+/*------- Modal -------- */
+.modal-content{
+    background: lightgray !important;
 }
