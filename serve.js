@@ -1,8 +1,7 @@
 var myData = {};
 var datosTeste = {"id": 1, "ad": 1, "ed": 1, "ud": 1,};
 
-refreshFromServer()
-function refreshFromServer() {
+refreshFromServer()function refreshFromServer() {
     var svgJson = new XMLHttpRequest();
 
     svgJson.open('GET', 'svg.php', false);
@@ -32,11 +31,11 @@ function refreshFromServer() {
     });
     
     $(document).ready(document).on('click', '.code-svg', function () {
-        console.log($(`#${this.id}`).index()-1);
         var position = $(`#${this.id}`).index()-1;
-        var selectIndex = symbols[position]
+        var selectIndex = symbols[position];
         var symbolCode = $(selectIndex).prop("outerHTML");
-        $(itm).find('.modal-body').val('');
+        console.log(symbolCode);
+        $('.modal-body').text(symbolCode);
 
     });
 };
