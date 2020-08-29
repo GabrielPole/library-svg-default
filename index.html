@@ -14,22 +14,23 @@
 </head>
 
 <body>
-    <div>
-        <h1 id="title" class="m-5 text-center">LIBRARY ICON SVG</h1>
+    <div class="d-flex flex-column justify-content-center">
+        <h1 id="title" class="m-4 text-center">LIBRARY ICON SVG</h1>
+        <button type="button" class="btn btn-secondary col-1 m-auto" data-toggle="modal" data-target="#add-svg"> + SVG</button>
     </div>
 
-     <!-- Button trigger modal -->
-     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    <!-- Button trigger modal -->
+    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
         Launch demo modal
-    </button>
+    </button> -->
 
     <div class="container">
         <div class="row justify-content-center">
-            <input id="filter" class="input-search mb-3" type="text" placeholder="Search here..." name="search">
+            <input id="filter" class="input-search my-3" type="text" placeholder="Search here..." name="search">
         </div>
 
         <div class="row justify-content-center">
-            <div id="default" class="default cna-box-svg m-2 p-3 col text-center" value="2">
+            <div id="default" class="default cna-box-svg m-2 p-3 col text-center d-none" value="2">
                 <a class="d-flex mb- text-center" href="#" data-toggle="modal" data-target="#exampleModal">
                     <svg class="svg-tag">
                         <use href="icon-library.svg#icon-panel"></use>
@@ -40,7 +41,7 @@
         </div>
     </div>
 
-   
+
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -53,12 +54,34 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    &ltsymbol id="icon-close" class="icon" viewBox="0 0 24 24"&gt  &lt/symbol&gt
+                <div class="modal-body show">
+                    &ltsymbol id='icon-close' class=icon' viewBox='0 0 24 24'&gt &lt/symbol&gt
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Copy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal add svg  -->
+    <div class="modal fade" id="add-svg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add The SVG Code Here</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                   <textarea name="" id="" cols="55" rows="10"  placeholder="&ltsymbol id='icon-close' class=icon' viewBox='0 0 24 24'&gt &lt/symbol&gt"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary btn-save-svg" data-dismiss="modal">Save</button>
                 </div>
             </div>
         </div>

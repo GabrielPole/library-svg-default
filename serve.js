@@ -1,14 +1,15 @@
-var myData = {};
+var doc;
 var datosTeste = {"id": 1, "ad": 1, "ed": 1, "ud": 1,};
 
-refreshFromServer()function refreshFromServer() {
+refreshFromServer();
+function refreshFromServer(){
     var svgJson = new XMLHttpRequest();
 
     svgJson.open('GET', 'svg.php', false);
     svgJson.send(null);
 
     var domparser = new DOMParser()
-    var doc = domparser.parseFromString(svgJson.responseText, "text/html")
+    doc = domparser.parseFromString(svgJson.responseText, "text/html")
 
     var symbols = $(doc).find(".icon");
     var icon = $('#default');
@@ -21,8 +22,6 @@ refreshFromServer()function refreshFromServer() {
         $(cln).removeClass('d-none');
         $(cln).removeClass('default');
         $(cln).addClass('code-svg');
-        $(cln).addClass('svg-'+contador);
-
 
         $(cln).find('use').attr("href", `icon-library.svg#${val.id}`);
         $(cln).find('.icon-name').text(val.id);
@@ -30,19 +29,40 @@ refreshFromServer()function refreshFromServer() {
         contador++
     });
     
-    $(document).ready(document).on('click', '.code-svg', function () {
+    $(document).ready().on('click', '.code-svg', function () {
         var position = $(`#${this.id}`).index()-1;
         var selectIndex = symbols[position];
         var symbolCode = $(selectIndex).prop("outerHTML");
-        console.log(symbolCode);
-        $('.modal-body').text(symbolCode);
+        $('.show').text(symbolCode);
 
     });
+
+
+    var testeSVG = '<button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>'
+    
+    $("#add-svg").ready().on('click', '.btn-save-svg', function () {
+        console.log($("#add-svg").find("textarea").val());
+        
+    });
+
+    
+    
+
 };
 
+    var simbol = document.createElement("p");
+    var elementos = doc.body.defs
+    
+    console.log(elementos);
+    
 
 
 
+// function updateToServer() {
+//     var myJson = new XMLHttpRequest();
+//     myJson.open('POST', 'data.php', false);
+//     myJson.send(JSON.stringify(window.myData));
+// };
 
 
 
@@ -67,8 +87,3 @@ refreshFromServer()function refreshFromServer() {
 //     });
 // };
 
-// function updateToServer() {
-//     var myJson = new XMLHttpRequest();
-//     myJson.open('POST', 'data.php', false);
-//     myJson.send(JSON.stringify(window.myData));
-// };
