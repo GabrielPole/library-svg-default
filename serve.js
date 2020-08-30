@@ -1,10 +1,15 @@
 var doc;
-var datosTeste = {"id": 1, "ad": 1, "ed": 1, "ud": 1,};
+var datosTeste = {};
+
+var iconGet = new XMLHttpRequest();
+    iconGet.open('get', 'data.php', false);
+    iconGet.send(null);
+    myData = JSON.parse(iconGet.responseText);
 
 refreshFromServer();
 function refreshFromServer(){
-    var svgJson = new XMLHttpRequest();
 
+    var svgJson = new XMLHttpRequest();
     svgJson.open('GET', 'svg.php', false);
     svgJson.send(null);
 
@@ -12,23 +17,21 @@ function refreshFromServer(){
     doc = domparser.parseFromString(svgJson.responseText, "text/html")
 
     var symbols = $(doc).find(".icon");
-    var icon = $('#default');
-   
 
+ 
+    var i=0;
 
-    var contador = 0 ;
+    console.log(myData.icons[0]);
 
     $.each(symbols, function (key, val) {
-        var cln = $(icon).clone().prop("id", val.id);
-        $(cln).removeClass('d-none');
-        $(cln).removeClass('default');
-        $(cln).addClass('code-svg');
 
-        $(cln).find('use').attr("href", `icon-library.svg#${val.id}`);
-        $(cln).find('.icon-name').text(val.id);
-        $(cln).appendTo($(icon).parent());
-        contador++
+        var viewBoxValue = $(symbols[i]).attr("viewBox")
+        var pathValue = $(symbols).html()
+        myData.icons[i] = {id: val.id , viewBox:viewBoxValue, path:pathValue }
+
+        i++
     });
+    console.log(myData);
     
     $(document).ready().on('click', '.code-svg', function () {
         var position = $(`#${this.id}`).index()-1;
@@ -38,32 +41,16 @@ function refreshFromServer(){
 
     });
 
-
-   
-    
-    $("#add-svg").ready().on('click', '.btn-save-svg', function () {
-        console.log($("#add-svg").find("textarea").val());
         
-    });
 };
 
-
-    var testeSVG = '<button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>'
-    var elementos = $(window.doc).find(".def").append(testeSVG)
-    var svgs = $(window.doc).find("body").html()
-
-    console.log(elementos);
-    console.log(svgs)
-     
-    
-    
-    updateToServer()
-
-      function updateToServer() {
-          var docSend = new XMLHttpRequest();
-          docSend.open('POST', 'svg.php', false);
-          docSend.send(JSON.stringify(svgs));
-      };
+   
+updateToServer()
+    function updateToServer() {
+        var myJson = new XMLHttpRequest();
+        myJson.open('POST', 'data.php', false);
+        myJson.send(JSON.stringify(window.myData));
+    };
     
 
 
