@@ -17,6 +17,7 @@ function refreshFromServer(){
 
 
     var contador = 0 ;
+
     $.each(symbols, function (key, val) {
         var cln = $(icon).clone().prop("id", val.id);
         $(cln).removeClass('d-none');
@@ -38,31 +39,32 @@ function refreshFromServer(){
     });
 
 
-    var testeSVG = '<button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>'
+   
     
     $("#add-svg").ready().on('click', '.btn-save-svg', function () {
         console.log($("#add-svg").find("textarea").val());
         
     });
-
-    
-    
-
 };
 
-    var simbol = document.createElement("p");
-    var elementos = doc.body.defs
-    
+
+    var testeSVG = '<button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>'
+    var elementos = $(window.doc).find(".def").append(testeSVG)
+    var svgs = $(window.doc).find("body").html()
+
     console.log(elementos);
+    console.log(svgs)
+     
     
+    
+    updateToServer()
 
-
-
-// function updateToServer() {
-//     var myJson = new XMLHttpRequest();
-//     myJson.open('POST', 'data.php', false);
-//     myJson.send(JSON.stringify(window.myData));
-// };
+      function updateToServer() {
+          var docSend = new XMLHttpRequest();
+          docSend.open('POST', 'svg.php', false);
+          docSend.send(JSON.stringify(svgs));
+      };
+    
 
 
 
